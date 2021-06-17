@@ -5,6 +5,7 @@ import Home from './pages/homePage';
 import DailyTasks from './pages/dailyTasks';
 import WeeklyTasks from './pages/weeklyTasks';
 import Search from './pages/search';
+import Signup from './pages/signup';
 
 class App extends Component {
     state = {  }
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path='/dailyTasks' component={DailyTasks} />
                     <Route path='/weeklyTasks' component={WeeklyTasks} />
                     <Route path='/search' component={Search} />
+                    <Route path='/signup' component={Signup} />
                 </Switch>
             </Router>
             
