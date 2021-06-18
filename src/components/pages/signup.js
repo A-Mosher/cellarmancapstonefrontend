@@ -3,7 +3,7 @@ import React from 'react';
 function Signup() {
     return (
         <div className='form-content-right'>
-            <form className='form'>
+            <form className='signup-form'>
                 <h1>sign up with this form</h1>
                 <div className='form-inputs'>
                     <label htmlFor='name' className='form-label'>

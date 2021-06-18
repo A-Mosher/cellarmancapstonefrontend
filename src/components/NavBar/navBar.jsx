@@ -5,7 +5,6 @@ import *as AiIcons from 'react-icons/ai';
 import { SideBarInfo } from '../SideBar/sideBar';
 import './navBar.css';
 import { IconContext } from 'react-icons';
-import styled from 'styled-components';
 import Signup from '../pages/signup';
 
 
@@ -20,6 +19,9 @@ function NavBar() {
                 <div className="navbar">
                     <Link to="#" className='menu-buttons'>
                         <FaIcons.FaBars onClick={showSidebar} />
+                    </Link>
+                    <Link to='/login' className='nav-login' onClick={Signup}>
+                        <p>Login</p>
                     </Link>
                     <Link to='/signup' className='nav-signup' onClick={Signup}>
                         <p>Signup</p>

@@ -1,3 +1,21 @@
+.nav-login {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 4rem;
+    background-color: cadetblue;
+
+}
+
+.nav-signup {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 1rem;
+    background-color: cadetblue;
+
+}
+
 .navbar {
     background-color: black;
     height: 80px;
@@ -77,13 +95,4 @@
 
 span {
     margin-left: 16px;
-}
-
-.nav-signup {
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    text-align: right;
-    background-color: cadetblue;
-    justify-content: flex-end;
 }
