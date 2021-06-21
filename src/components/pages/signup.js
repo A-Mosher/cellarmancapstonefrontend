@@ -4,7 +4,7 @@ function Signup() {
     return (
         <div className='form-content-right'>
             <form className='signup-form'>
-                <h1>sign up with this form</h1>
+                <h1>Sign up</h1>
                 <div className='form-inputs'>
                     <label htmlFor='name' className='form-label'>
                         Name

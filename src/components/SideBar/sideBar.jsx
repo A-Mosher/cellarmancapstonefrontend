@@ -25,5 +25,11 @@ export const SideBarInfo = [
         path: '/search',
         icon: <FaIcons.FaSearch />,
         cName: 'nav-text' 
+    },
+    {
+        title: 'New Product',
+        path: '/newproduct',
+        icon: <FaIcons.FaBeer />,
+        cName: 'nav-text' 
     }
 ]
