@@ -2,19 +2,20 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class NewProduct extends Component {
-    state = {
-        name: '',
-        style: '',
-        tank: '',
-        yeast: '',
-        additions: '',
-        gravity: '',
-        temperature: '',
-        pH: '',
-        brewOrBlendDate: '',
-        notes: '',
+    constructor() {
+        super();
+        this.state = {
+            name: '',
+            style: '',
+            tank: '',
+            yeast: '',
+            additions: '',
+            gravity: '',
+            temperature: '',
+            pH: '',
+            notes: '',
+        };
     }
-
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -23,7 +24,18 @@ class NewProduct extends Component {
 
     async handleSubmit(event){
         event.preventDefault();
-        await axios.post(`http://localhost:5000/api/products`, this.state)
+        let product = {
+            name: this.state.name,
+            style: this.state.style,
+            tank: this.state.tank,
+            yeast: this.state.yeast,
+            additions: this.state.additions,
+            gravity: this.state.gravity,
+            temperature: this.state.temperature,
+            pH: this.state.pH,
+            notes: this.state.notes,
+        }
+        await axios.post(`http://localhost:5000/api/products`, product)
         .then(response => console.log(response))
         .catch(error => console.log(error))
     }
@@ -85,7 +97,7 @@ class NewProduct extends Component {
                     <label htmlFor='notes' className='form-label'>
                         Notes
                     </label>
-                    <input id= 'Notes' type='text' name='notes' className='form-input' placeholder='Notes' onChange={this.handleChange} value={this.state.notes}/>
+                    <input id= 'notes' type='text' name='notes' className='form-input' placeholder='Notes' onChange={this.handleChange} value={this.state.notes}/>
                 </div>
                 <button className='form-input-btn' type='submit' >
                     Enter Beer
