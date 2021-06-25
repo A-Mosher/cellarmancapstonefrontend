@@ -1,40 +1,26 @@
-import React, { useState, useEffect }from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import './tank.css';
 
 function Tank(props) {
-
-
 
     return (
         <div>
             <Container fluid>
                 <Row>
-                    <Col>{props.tankName}</Col>
-                    <Col>{props.beerName}{props.beerStyle}</Col>
-                    <Col>{props.currentGravity}</Col>
-                    <Col>{props.fermentationStatus}</Col>
-                </Row>
-                <Row>
-                    <Col>Tank 2</Col>
-                    <Col>Beer name and style</Col>
-                    <Col>Gravity</Col>
-                    <Col>Status</Col>
-                </Row>
-                <Row>
-                    <Col>Tank 3</Col>
-                    <Col>Beer name and style</Col>
-                    <Col>Gravity</Col>
-                    <Col>Status</Col>
-                </Row>
-                <Row>
-                    <Col>Tank 4</Col>
-                    <Col>Beer name and style</Col>
-                    <Col>Gravity</Col>
-                    <Col>Status</Col>
+                    <Col className="tankDisplay">{props.beer.tank}</Col>
+
+                    <Col>{props.beer.name}{props.beer.style}</Col>
+
+                    <Col>{props.beer.gravity}</Col>
+
+                    <Col>{props.beer.fermStatus}</Col>
+
                 </Row>
             </Container>
         </div>
     );
     
 }
+
+export default Tank;
