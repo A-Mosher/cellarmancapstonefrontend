@@ -33,6 +33,8 @@ class NewProduct extends Component {
             gravity: this.state.gravity,
             temperature: this.state.temperature,
             pH: this.state.pH,
+            fermStatus: this.state.fermStatus,
+            packageStatus: this.state.packageStatus,
             notes: this.state.notes,
         }
         await axios.post(`http://localhost:5000/api/products`, product)
