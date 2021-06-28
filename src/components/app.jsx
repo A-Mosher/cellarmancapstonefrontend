@@ -16,12 +16,14 @@ class App extends Component {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route path='/' exact component={Home} />
+                    <Route path='/' exact render={props => (
+                        <Home {...props} loggedInStatus={this.state.loggedInStatus} />
+                    )} />
                     <Route path='/dailyTasks' component={DailyTasks} />
                     <Route path='/weeklyTasks' component={WeeklyTasks} />
                     <Route path='/search' component={Search} />
-                    <Route path='/login' component={Login} />
-                    <Route path='/signup' component={Signup} />
+                    {/* <Route path='/login' component={Login} />
+                    <Route path='/signup' component={Signup} /> */}
                     <Route path='/newProduct' component={NewProduct} />
                 </Switch>
             </Router>

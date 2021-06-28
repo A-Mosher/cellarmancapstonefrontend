@@ -1,26 +1,26 @@
 import React, { useState, useEffect }from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+// import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Tank from '../tank';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { render } from '@testing-library/react';
+// import { propTypes } from 'react-bootstrap/esm/Image';
+// import { render } from '@testing-library/react';
 
 
 export default function Home() {
 
     const [data, setData] = useState([]);
     const [unpackagedProducts, setUnPackagedProducts] = useState([]);
-    const [fillTank, setFillTank] = useState([]);
-    const [tankName, setTankName] = useState([]);
+    // const [fillTank, setFillTank] = useState([]);
+    // const [tankName, setTankName] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/products')
-        .then(res => {
-            const resData = res.data
-            setData(resData);
-            findPackageStatus()
-        })
-    }, );
+    // useEffect(() => {
+    //     axios.get('https://localhost:5000/api/products')
+    //     .then(res => {
+    //         const resData = res.data
+    //         setData(resData);
+    //         findPackageStatus()
+    //     })
+    // }, );
 
     function findPackageStatus(){
         let filteredProducts = data.filter(products => products.packageStatus === 'unpackaged')
@@ -77,7 +77,8 @@ export default function Home() {
 
         return (
             <div className='home'>
-                {renderTanks()}
+                {/* <h1>Status: {this.props.loggedInStatus}</h1> */}
+                {/* {renderTanks()} */}
             </div>
         )    
 }

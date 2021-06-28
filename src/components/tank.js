@@ -9,6 +9,7 @@ function Tank(props) {
             <Container fluid>
                 <Row>
                     <Col className="tankDisplay">{props.beer.tank}</Col>
+                        <button>Update Product</button>
 
                     <Col>{props.beer.name}{props.beer.style}</Col>
 
