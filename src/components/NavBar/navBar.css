@@ -4,6 +4,9 @@
     font-size: 14px;
     margin-left: 4rem;
     background-color: cadetblue;
+    margin-left: auto;
+    border-radius: 1mm;
+    padding-inline: 2mm;
 
 }
 
@@ -13,7 +16,9 @@
     font-size: 14px;
     margin-left: 1rem;
     background-color: cadetblue;
-
+    margin: 1rem;
+    border-radius: 2mm;
+    padding-inline: 2mm;
 }
 
 .navbar {

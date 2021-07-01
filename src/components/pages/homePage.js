@@ -2,25 +2,29 @@ import React, { useState, useEffect }from 'react';
 // import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Tank from '../tank';
+import FilterData from '../filterData'
 // import { propTypes } from 'react-bootstrap/esm/Image';
 // import { render } from '@testing-library/react';
 
 
 export default function Home() {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [unpackagedProducts, setUnPackagedProducts] = useState([]);
     // const [fillTank, setFillTank] = useState([]);
     // const [tankName, setTankName] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get('https://localhost:5000/api/products')
-    //     .then(res => {
-    //         const resData = res.data
-    //         setData(resData);
-    //         findPackageStatus()
-    //     })
-    // }, );
+    useEffect(() => {
+        const getAllProducts = async () => {
+         await axios.get('http://localhost:5000/api/products')
+        .then(res => {
+            const resData = res.data
+            setData(resData);
+            findPackageStatus();
+        }) 
+        .catch(error => console.log(error))
+    }
+    getAllProducts()}, []);
 
     function findPackageStatus(){
         let filteredProducts = data.filter(products => products.packageStatus === 'unpackaged')
@@ -30,7 +34,8 @@ export default function Home() {
 
     function renderTanks(){
         let showTank = unpackagedProducts.map(product => (
-            <Tank 
+            <Tank
+                key={product.tank}
                 beer={product}           
             />
         ))
@@ -63,22 +68,22 @@ export default function Home() {
     //     let beerName = unpackagedProducts.filter( =>)
     // };
 
-    function findBeerStyle() {
+    // function findBeerStyle() {
 
-    };
+    // };
 
-    function findCurrentGravity() {
+    // function findCurrentGravity() {
 
-    };
+    // };
 
-    function updateFermentationStatus() {
+    // function updateFermentationStatus() {
 
-    };
+    // };
 
         return (
             <div className='home'>
                 {/* <h1>Status: {this.props.loggedInStatus}</h1> */}
-                {/* {renderTanks()} */}
+                {data ? renderTanks() : <h1>Loading...</h1> }
             </div>
         )    
 }
