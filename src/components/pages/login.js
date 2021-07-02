@@ -25,16 +25,14 @@ class Login extends Component {
     handleSubmit(event) {
         const { email, password } = this.state;
 
-        axios.post('http://localhost:5000/auth',
+        axios.post('http://localhost:5000/api/auth',
         {
-            auth: {
-                email: email,
-                password: password
-            }
+            email: email,
+            password: password
         },
-        { withCredentials: true }
         )
         .then(response => {
+            console.log(response)
             if (response.data.logged_in === true) {
                 this.props.handleSuccessfulAuth(response.data);
             }
@@ -52,19 +50,19 @@ class Login extends Component {
                         <label htmlFor='email' className='form-label'>
                             Email
                         </label>
-                        <input id='email' type='email' name='email' className='form-input' placeholder='Enter your email' />
+                        <input id='email' type='email' name='email' onChange={this.handleChange} className='form-input' placeholder='Enter your email' />
                     </div>
                     <div className='form-inputs'>
                         <label htmlFor='password' className='form-label'>
                             Password
                         </label>
-                        <input id= 'password' type='password' name='password' className='form-input' placeholder='Enter your password' />
+                        <input id= 'password' type='password' name='password' onChange={this.handleChange} className='form-input' placeholder='Enter your password' />
                     </div>
-                    <button className='form-input-btn' type='submit'>
+                    <button onClick={this.handleSubmit} className='form-input-btn' type='submit'>
                         Login
                     </button>
                     <span className='form-input-login'>
-                        Don't have an account? Signup <a href='a'>here</a>
+                        Don't have an account? Signup <a href='/signup'>here</a>
                     </span>
 
                 </form>

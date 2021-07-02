@@ -21,10 +21,10 @@ function NavBar() {
                     <Link to="#" className='menu-buttons'>
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
-                    <Link to='/login' className='nav-login' onClick={Login}>
+                    <Link to='/login' className='nav-login'>
                         <p>Login</p>
                     </Link>
-                    <Link to='/signup' className='nav-signup' onClick={Signup}>
+                    <Link to='/signup' className='nav-signup'>
                         <p>Signup</p>
                     </Link>
                 </div>

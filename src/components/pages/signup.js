@@ -9,11 +9,11 @@ class Signup extends Component {
             name: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            password2: ""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
     }
 
@@ -31,15 +31,14 @@ class Signup extends Component {
             password2
         } = this.state;
 
-        axios.post('http://localhost:5000/api/user', {
+        axios.post('http://localhost:5000/api/users', {
             user: {
                 name: name,
                 email: email,
                 password: password,
                 password2: password2
             }
-        },
-        { withCredentials: true}
+        }
         )
         .then(response => {
             console.log('registration res', response);
@@ -63,7 +62,6 @@ class Signup extends Component {
                         name='name'
                         className='form-input'
                         placeholder='Enter your first and last name'
-                        value={this.state.email}
                         onChange={this.handleChange}
                         required />
                     </div>
@@ -77,7 +75,6 @@ class Signup extends Component {
                         name='email'
                         className='form-input'
                         placeholder='Enter your email'
-                        value={this.state.email}
                         onChange={this.handleChange}
                         required />
                     </div>
@@ -91,7 +88,6 @@ class Signup extends Component {
                         name='password'
                         className='form-input'
                         placeholder='Enter your password'
-                        value={this.state.password}
                         onChange={this.handleChange}
                         required />
                     </div>
@@ -105,7 +101,6 @@ class Signup extends Component {
                         name='password2'
                         className='form-input'
                         placeholder='Re-enter your password'
-                        value={this.state.password2}
                         onChange={this.handleChange}
                         required />
                     </div>
@@ -113,7 +108,7 @@ class Signup extends Component {
                         Sign Up
                     </button>
                     <span className='form-input-login'>
-                        Already have an account? Login <a href='a'>here</a>
+                        Already have an account? Login <a href='/login'>here</a>
                     </span>
 
                 </form>
