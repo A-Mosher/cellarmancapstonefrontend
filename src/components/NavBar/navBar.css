@@ -101,3 +101,15 @@
 span {
     margin-left: 16px;
 }
+
+
+.updateProducts {
+    position: fixed;
+    width: 85%;
+    left: 5%;
+    top: 200px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 2px #999;
+  }
+  

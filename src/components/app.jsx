@@ -8,24 +8,49 @@ import Search from './pages/search';
 import Signup from './pages/signup';
 import Login from './pages/login';
 import NewProduct from './newProduct';
+import LandingPage from './pages/landingPage';
 
 class App extends Component {
-    state = {  }
+    constructor() {
+        super();
+
+        this.state = {
+            loggedInStatus: "NOT_LOGGED_IN",
+            user: {}
+        };
+
+        // this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+
+        this.handleLogin = this.handleLogin.bind(this);
+
+    }
+
+    // handleSuccessfulAuth(data) {
+    //     this.props.history.push('/');
+    // }
+
+    handleLogin(data) {
+        this.setState({
+            loggedInStatus: "LOGGED_IN",
+            user: data.user
+        });
+
+    }
     render() {
         return (
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route path='/' exact render={props => (
+                    <Route exact path={'/signup'} render={props => (
+                        <LandingPage {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
+                    )} />
+                    <Route exact path={'/'} render={props => (
                         <Home {...props} loggedInStatus={this.state.loggedInStatus} />
                     )} />
                     <Route path='/dailyTasks' component={DailyTasks} />
                     <Route path='/weeklyTasks' component={WeeklyTasks} />
                     <Route path='/search' component={Search} />
-                    <Route path='/login'>
-                        <Login />
-                    </Route>
-                    <Route path='/signup' component={Signup} />
+                    <Route path='/login' component={Login} />
                     <Route path='/newProduct' component={NewProduct} />
                 </Switch>
             </Router>

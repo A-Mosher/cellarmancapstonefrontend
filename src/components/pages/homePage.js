@@ -1,89 +1,89 @@
-import React, { useState, useEffect }from 'react';
-// import { Container, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
-import Tank from '../tank';
-import FilterData from '../filterData'
-// import { propTypes } from 'react-bootstrap/esm/Image';
-// import { render } from '@testing-library/react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Tank from "../tank";
+import UpdateProducts from "../updateProducts";
 
+export default function Home(props) {
+  const [data, setData] = useState(null);
+  const [unpackagedProducts, setUnPackagedProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-export default function Home() {
+  const onChange = (event) => {
+    const { name, value } = event.target;
 
-    const [data, setData] = useState(null);
-    const [unpackagedProducts, setUnPackagedProducts] = useState([]);
-    // const [fillTank, setFillTank] = useState([]);
-    // const [tankName, setTankName] = useState([]);
+    setSelectedProduct({
+      ...selectedProduct,
+      [name]: value,
+    });
+  };
 
-    useEffect(() => {
-        const getAllProducts = async () => {
-         await axios.get('http://localhost:5000/api/products')
-        .then(res => {
-            const resData = res.data
-            setData(resData);
-            findPackageStatus();
-        }) 
-        .catch(error => console.log(error))
-    }
-    getAllProducts()}, []);
+  const getAllProducts = async () => {
+    await axios
+      .get("http://localhost:5000/api/products")
+      .then((res) => {
+        const resData = res.data;
+        setData(resData);
+        findPackageStatus(resData);
+      })
+      .catch((error) => console.log(error));
+  };
 
-    function findPackageStatus(){
-        let filteredProducts = data.filter(products => products.packageStatus === 'unpackaged')
-        setUnPackagedProducts(filteredProducts)
-        
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    function renderTanks(){
-        let showTank = unpackagedProducts.map(product => (
-            <Tank
-                key={product.tank}
-                beer={product}           
-            />
-        ))
-        return (
-            showTank
-        )
-    };
+    const id = selectedProduct._id;
+    delete selectedProduct._id;
+    delete selectedProduct.__v;
 
-    // function fillTankOne() {
-    //     let tankOne = unpackagedProducts.filter(unpackagedBeers => unpackagedBeers.tank === 'tank 1')
-    //     setFillTank(tankOne)
-    // };
+    setSelectedProduct(null);
+    await axios.put(
+      `http://localhost:5000/api/products/${id}`,
+      selectedProduct
+    );
 
-    // function fillTankTwo() {
-    //     let tankTwo = unpackagedProducts.filter(unpackagedBeers => unpackagedBeers.tank === 'tank 2')
-    //     setFillTank(tankTwo)
-    // };
+    console.log("Updated!", selectedProduct);
+    getAllProducts();
+  };
+  
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
-    // function fillTankThree() {
-    //     let tankThree = unpackagedProducts.filter(unpackagedBeers => unpackagedBeers.tank === 'tank 3')
-    //     setFillTank(tankThree)
-    // };
+  function findPackageStatus(data) {
+    let filteredProducts = data.filter(
+      (products) => products.packageStatus === "unpackaged"
+    );
+    setUnPackagedProducts(filteredProducts);
+  }
 
-    // function fillTankFour() {
-    //     let tankFour = unpackagedProducts.filter(unpackagedBeers => unpackagedBeers.tank === 'tank 4')
-    //     setFillTank(tankFour)
-    // };
+  function renderTanks() {
+    let showTank = unpackagedProducts.map((product) => (
+      <Tank
+        key={product.tank}
+        beer={product}
+        onClick={() => setSelectedProduct(product)}
+      />
+    ));
+    return showTank;
+  }
 
-    // function findBeerName() {
-    //     let beerName = unpackagedProducts.filter( =>)
-    // };
+  return (
+    <div className="home">
+      {/* <h1>Status: {this.props.loggedInStatus}</h1> */}
+      {data ? renderTanks() : <h1>Loading...</h1>}
+      <div>
+        <h1>Home</h1>
+        <h1>Status: {props.loggedInStatus}</h1>
+      </div>
 
-    // function findBeerStyle() {
-
-    // };
-
-    // function findCurrentGravity() {
-
-    // };
-
-    // function updateFermentationStatus() {
-
-    // };
-
-        return (
-            <div className='home'>
-                {/* <h1>Status: {this.props.loggedInStatus}</h1> */}
-                {data ? renderTanks() : <h1>Loading...</h1> }
-            </div>
-        )    
+      {selectedProduct && (
+        <UpdateProducts
+          product={selectedProduct}
+          onChange={onChange}
+          handleSubmit={handleSubmit}
+          close={() => setSelectedProduct(null)}
+        />
+      )}
+    </div>
+  );
 }

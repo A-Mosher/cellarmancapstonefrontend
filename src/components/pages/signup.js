@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import LandingPage from './landingPage';
 
 class Signup extends Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class Signup extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
     }
 
     handleChange(event) {
@@ -38,15 +38,19 @@ class Signup extends Component {
                 password: password,
                 password2: password2
             }
-        }
-        )
+        })
         .then(response => {
+            const { handleSuccessfulAuth } = this.props;
             console.log('registration res', response);
+            handleSuccessfulAuth && handleSuccessfulAuth(response.data);
         }).catch(error => {
+            // User already exists
             console.log('registration error', error);
         });
+
         event.preventDefault();
     }
+
     render() {
         return (
             <div className='form-content-right'>
@@ -104,7 +108,7 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required />
                     </div>
-                    <button className='form-input-btn' type='submit'>
+                    <button className='form-input-btn' type='submit' >
                         Sign Up
                     </button>
                     <span className='form-input-login'>
