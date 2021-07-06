@@ -17,3 +17,11 @@
   justify-content: center;
   font-size: 3rem;
 }
+
+.strike {
+  text-decoration: line-through;
+}
+
+.tasks {
+  cursor: pointer;
+}

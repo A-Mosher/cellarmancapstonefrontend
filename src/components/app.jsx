@@ -10,6 +10,7 @@ import Login from './pages/login';
 import NewProduct from './newProduct';
 import LandingPage from './pages/landingPage';
 
+
 class App extends Component {
     constructor() {
         super();
@@ -51,7 +52,7 @@ class App extends Component {
                     <Route path='/weeklyTasks' component={WeeklyTasks} />
                     <Route path='/search' component={Search} />
                     <Route path='/login' component={Login} />
-                    <Route path='/newProduct' component={NewProduct} />
+                    <Route path='/newProduct' component={NewProduct} />\
                 </Switch>
             </Router>
             
