@@ -1,3 +1,43 @@
-.tankDisplay{
+.tankDisplay {
     background-color: cadetblue;
+    background-size: 20% auto;
+    border: 5mm ;
+    padding: 4mm;
+    margin: 2mm;
+    font-size: 8mm;
+    
+    
+}
+
+.beerName {
+     margin: 2mm;
+     background-color: gray;
+     color: white;
+     padding: 1mm;
+}
+
+.style {
+    margin: 2mm;
+    padding: 1mm;
+    background-color: gray;
+    color: white;
+}
+
+.pH {
+    margin: 2mm;
+    padding: 1mm;
+    background-color: gray;
+    color: white;
+}
+
+.fermStatus {
+    margin: 2mm;
+    padding: 1mm;
+    background-color: gray;
+    color: white;
+}
+
+.allTanks {
+    text-align: center;
+    
 }

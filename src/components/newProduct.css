@@ -1,0 +1,28 @@
+.form-label {
+    background-color: cadetblue;
+    color: white;
+    font-size: 5mm;
+    margin: 3mm;
+    padding: 2mm;
+    border-radius: 1mm;
+    ;
+}
+
+.everything {
+    background-color: gray;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    background-color: cadetblue;
+}
+
+.form-inputs {
+    text-align: left;
+}
+
+.form-input-btn {
+    margin: 3mm;
+    content: center;
+}

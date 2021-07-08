@@ -6,19 +6,16 @@ function Tank(props) {
   return (
     <div>
       <Container fluid>
-        <Row>
+        <Row className="allTanks">
           <Col className="tankDisplay">{props.beer.tank}</Col>
-          <Col>
-            {props.beer.name}
-            <Col>
-            {props.beer.style}
-            </Col>
-          </Col>
-          <Col>{props.beer.gravity}</Col>
-          <Col>{props.beer.fermStatus}</Col>
+          <Col className="beerName">Name: {props.beer.name}</Col>
+          <Col className="style">Style: {props.beer.style}</Col>
+          <Col className="pH">pH: {props.beer.gravity}</Col>
+          <Col className="fermStatus">Fermentation: {props.beer.fermStatus}</Col>
           <Col>
             <button onClick={props.onClick}>Update Product</button>
           </Col>
+          <br></br>
         </Row>
       </Container>
     </div>
