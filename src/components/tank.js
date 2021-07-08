@@ -10,7 +10,9 @@ function Tank(props) {
           <Col className="tankDisplay">{props.beer.tank}</Col>
           <Col>
             {props.beer.name}
+            <Col>
             {props.beer.style}
+            </Col>
           </Col>
           <Col>{props.beer.gravity}</Col>
           <Col>{props.beer.fermStatus}</Col>

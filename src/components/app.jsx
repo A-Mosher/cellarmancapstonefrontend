@@ -9,6 +9,7 @@ import Signup from './pages/signup';
 import Login from './pages/login';
 import NewProduct from './newProduct';
 import LandingPage from './pages/landingPage';
+import UpdateProducts from './updateProducts';
 
 
 class App extends Component {
