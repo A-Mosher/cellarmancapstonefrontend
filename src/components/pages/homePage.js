@@ -71,10 +71,6 @@ export default function Home(props) {
     <div className="home">
       {/* <h1>Status: {this.props.loggedInStatus}</h1> */}
       {data ? renderTanks() : <h1>Loading...</h1>}
-      <div>
-        <h1>Home</h1>
-        <h1>Status: {props.loggedInStatus}</h1>
-      </div>
 
       {selectedProduct && (
         <UpdateProducts
