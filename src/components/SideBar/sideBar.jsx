@@ -4,7 +4,7 @@ import *as FaIcons from 'react-icons/fa';
 export const SideBarInfo = [
     {
         title: 'Home',
-        path: '/',
+        path: '/home',
         icon: <FaIcons.FaHome />,
         cName: 'nav-text'
     },

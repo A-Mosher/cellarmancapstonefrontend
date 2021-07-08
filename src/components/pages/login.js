@@ -44,7 +44,7 @@ class Login extends Component {
     render(){
         return (
             <div className='form-content-right'>
-                <form className='login-form'>
+                <form onSubmit={this.handleSubmit} className='login-form'>
                     <h1>Login</h1>
                     <div className='form-inputs'>
                         <label htmlFor='email' className='form-label'>
@@ -58,7 +58,7 @@ class Login extends Component {
                         </label>
                         <input id= 'password' type='password' name='password' onChange={this.handleChange} className='form-input' placeholder='Enter your password' />
                     </div>
-                    <button onClick={this.handleSubmit} className='form-input-btn' type='submit'>
+                    <button className='form-input-btn' type='submit'>
                         Login
                     </button>
                     <span className='form-input-login'>

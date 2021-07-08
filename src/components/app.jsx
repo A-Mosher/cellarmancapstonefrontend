@@ -43,16 +43,19 @@ class App extends Component {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route exact path={'/signup'} render={props => (
+                    <Route exact path={'/'} render={props => (
                         <LandingPage {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
                     )} />
-                    <Route exact path={'/'} render={props => (
+                    <Route exact path={'/home'} render={props => (
                         <Home {...props} loggedInStatus={this.state.loggedInStatus} />
                     )} />
                     <Route path='/dailyTasks' component={DailyTasks} />
                     <Route path='/weeklyTasks' component={WeeklyTasks} />
                     <Route path='/search' component={Search} />
-                    <Route path='/login' component={Login} />
+                    <Route exact path={'/login'} render={props => (
+                        <Login {...props} loggedInStatus={this.state.loggedInStatus} />
+                    )} />
+                    <Route path='/signup' component={Signup} />
                     <Route path='/newProduct' component={NewProduct} />\
                 </Switch>
             </Router>

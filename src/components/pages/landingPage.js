@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import Login from './login';
 import Signup from './signup';
 
 export default class LandingPage extends Component {
@@ -9,7 +10,7 @@ export default class LandingPage extends Component {
     }
 
     handleSuccessfulAuth(data) {
-        this.props.history.push('/');
+        this.props.history.push('/home');
         this.props.handleLogin(data);
     }
 
