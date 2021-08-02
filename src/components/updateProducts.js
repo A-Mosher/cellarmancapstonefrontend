@@ -37,8 +37,7 @@ function UpdateProducts(props) {
                 </label>
                 <label className="updateLabel">
                     Package status:
-                    <input type="radio" name="packageStatus" value={product.packageStatus} onChange={onChange} checked/> Unpackaged
-                    <input type="radio" name="packageStatus" value={product.packageStatus} onChange={onChange}/>Packaged
+                    <input type="text" name="packageStatus" value={product.packageStatus} onChange={onChange} />
                 </label>
                 <input type="submit" value="Submit" />
                 <button onClick={close}>Close</button>

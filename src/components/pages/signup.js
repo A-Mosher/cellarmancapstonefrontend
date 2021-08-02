@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LandingPage from './landingPage';
+import './signup.css';
 
 class Signup extends Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class Signup extends Component {
         })
         .then(response => {
             const { handleSuccessfulAuth } = this.props;
+            alert("Registration Successful")
             console.log('registration res', response);
             handleSuccessfulAuth && handleSuccessfulAuth(response.data);
         }).catch(error => {
@@ -55,7 +57,7 @@ class Signup extends Component {
         return (
             <div className='form-content-right'>
                 <form onSubmit={this.handleSubmit} className='signup-form'>
-                    <h1>Sign up</h1>
+                    <h1 className="header">Sign up</h1>
                     <div className='form-inputs'>
                         <label htmlFor='name' className='form-label'>
                             Name
@@ -69,6 +71,7 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required />
                     </div>
+                    <br></br>
                     <div className='form-inputs'>
                         <label htmlFor='email' className='form-label'>
                             Email
@@ -82,6 +85,7 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required />
                     </div>
+                    <br></br>
                     <div className='form-inputs'>
                         <label htmlFor='password' className='form-label'>
                             Password
@@ -95,6 +99,7 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required />
                     </div>
+                    <br></br>
                     <div className='form-inputs'>
                         <label htmlFor='password2' className='form-label'>
                             Confirm Password
@@ -108,6 +113,7 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required />
                     </div>
+                    <br></br>
                     <button className='form-input-btn' type='submit' >
                         Sign Up
                     </button>

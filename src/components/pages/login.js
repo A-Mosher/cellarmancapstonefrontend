@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './login.css';
 
 
 class Login extends Component {
@@ -32,6 +33,7 @@ class Login extends Component {
         },
         )
         .then(response => {
+            alert("Login Successful")
             console.log(response)
             if (response.data.logged_in === true) {
                 this.props.handleSuccessfulAuth(response.data);
@@ -45,19 +47,21 @@ class Login extends Component {
         return (
             <div className='form-content-right'>
                 <form onSubmit={this.handleSubmit} className='login-form'>
-                    <h1>Login</h1>
+                    <h1 className="header">Login</h1>
                     <div className='form-inputs'>
                         <label htmlFor='email' className='form-label'>
                             Email
                         </label>
                         <input id='email' type='email' name='email' onChange={this.handleChange} className='form-input' placeholder='Enter your email' />
                     </div>
+                    <br></br>
                     <div className='form-inputs'>
                         <label htmlFor='password' className='form-label'>
                             Password
                         </label>
                         <input id= 'password' type='password' name='password' onChange={this.handleChange} className='form-input' placeholder='Enter your password' />
                     </div>
+                    <br></br>
                     <button className='form-input-btn' type='submit'>
                         Login
                     </button>
